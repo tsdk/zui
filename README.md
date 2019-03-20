@@ -73,7 +73,7 @@ bower install zui
 1. 进入 ZUI 源码目录；
 2. 执行 `npm install`；
 3. 执行 `npm start`；
-4. 在浏览器中访问 `http://127.0.0.1:8088`。
+4. 在浏览器中访问 `http://127.0.0.1:4000`。
 
 ## 使用 ZUI 开发的项目
 
