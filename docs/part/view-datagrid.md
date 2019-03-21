@@ -158,7 +158,7 @@ $('#myDataGrid').datagrid({
     // 用户界面提示消息，当请求结果失败时，可以使用此属性返回文本显示在用户界面上
     "message": "",
 
-    // 远程数据的分页信息对象（必须），其中 
+    // 远程数据的分页信息对象（必须），其中
     "pager": {
         "page": 1,           // 当前数据对应的页码
         "recTotal": 1001,    // 总的数据数目
@@ -707,7 +707,7 @@ $('#myDataGrid').datagrid({
         cols: [
             {
                 name: 'time',
-                label: '时间', 
+                label: '时间',
                 // 值转换器仅仅影响当前列
                 valueOperator: {
                     getter: function(dataValue, cell, dataGrid) {
@@ -826,7 +826,7 @@ $('#myDataGrid').datagrid({
         if (selector === 'R1C1') {
             return {color: 'red'};
         }
-    } 
+    }
 });
 ```
 
@@ -1103,13 +1103,13 @@ $('#myDataGrid').datagrid({
       <td><code>showMessage</code></td>
       <td>出现错误时是否显示消息</td>
       <td>默认为 `true`</td>
-      <td>该选项还可以设置为一个对象，用于指定漂浮消息初始化选项。</td>
+      <td></td>
     </tr>
     <tr>
       <td><code>mouseWheelFactor</code></td>
-      <td>出现错误时是否显示消息</td>
+      <td>滚动鼠标滚轮时的滚动速度</td>
       <td>默认为 `1`</td>
-      <td>该选项还可以设置为一个对象，用于指定漂浮消息初始化选项。</td>
+      <td></td>
     </tr>
   </tbody>
 </table>
@@ -1407,6 +1407,32 @@ $('#dataGrid').on('onLoad', function(event, result) {
 });
 ```
 
+### `onSelectRow`
+
+当选中或取消选中表格行时触发，其中回调函数参数包括：
+
+* `rowId`：选中状态变更的行 ID；
+* `checked`：`true` 表示选中，`false` 表示取消选中；
+* `selections`：当前所有选中的行。
+
+```js
+// 在初始化的时候设置事件回调函数
+$('#dataGrid').datagrid({
+    onSelectRow: function(rowId, checked, selections) {
+        console.log('行', rowID, checked ? '选中了' : '取消选中了');
+    }
+});
+```
+
+```js
+// 使用 jquery 的 $().on() 方法监听事件
+$('#dataGrid').on('onLoad', function(event, result) {
+    if (result === false) {
+        console.log('数据加载失败。');
+    }
+});
+```
+
 <script src="dist/lib/selectable/zui.selectable.js"></script>
 <script src="dist/lib/datagrid/zui.datagrid.js"></script>
 <link href="dist/lib/datagrid/zui.datagrid.css" rel="stylesheet">
@@ -1590,7 +1616,10 @@ function afterPageLoad() {
         renderDelay: 200,
         checkable: true,
         sortable: true,
-        hoverCell: true
+        hoverCell: true,
+        onSelectRow: function(rowIndex, checked, selections) {
+          console.log('>', rowIndex, checked, selections);
+        }
     });
     var simpleDataSource = {
           cols: sampleData.dataSource.cols,

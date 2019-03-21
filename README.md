@@ -10,7 +10,7 @@
 
 💎 &nbsp;为移动端设计，基于 Flex 的 UI 框架： [MZUI](http://zui.sexy/m/)。
 
-官方 QQ 群：**384135104**
+官方 QQ 群：**2群：127535859**，1群：384135104（满员）
 项目和计划：http://zui.5upm.com/product-browse-2.html
 
 ## 特色
@@ -43,12 +43,12 @@ bower install zui
 
 ```html
 <!-- ZUI 标准版压缩后的 CSS 文件 -->
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/zui/1.8.1/css/zui.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/zui/1.9.0/css/zui.min.css">
 
 <!-- ZUI Javascript 依赖 jQuery -->
-<script src="//cdnjs.cloudflare.com/ajax/libs/zui/1.8.1/lib/jquery/jquery.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/zui/1.9.0/lib/jquery/jquery.js"></script>
 <!-- ZUI 标准版压缩后的 JavaScript 文件 -->
-<script src="//cdnjs.cloudflare.com/ajax/libs/zui/1.8.1/js/zui.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/zui/1.9.0/js/zui.min.js"></script>
 ```
 
 其他 CDN:
@@ -57,8 +57,8 @@ bower install zui
 
 ### 下载
 
- - [v 1.8.1 生产包](https://github.com/easysoft/zui/releases/download/v1.8.1/zui-1.8.1-dist.zip)
- - [v 1.8.1 源码](https://github.com/easysoft/zui/archive/v1.8.1.zip)
+ - [v 1.9.0 生产包](https://github.com/easysoft/zui/releases/download/v1.9.0/zui-1.9.0-dist.zip)
+ - [v 1.9.0 源码](https://github.com/easysoft/zui/archive/v1.9.0.zip)
 
 ### 文档
 

@@ -46,7 +46,8 @@
         keyboard: true,
         waittime: 0,
         loadingIcon: 'icon-spinner-indicator',
-        scrollInside: false
+        scrollInside: false,
+        // headerHeight: 'auto',
     };
 
     ModalTrigger.prototype.init = function(options) {
@@ -229,6 +230,7 @@
 
                             var $framebody = frame$('body').addClass('body-modal').toggleClass('body-modal-scroll-inside', scrollInside);
                             if(options.iframeBodyClass) $framebody.addClass(options.iframeBodyClass);
+                            var frameSizeRecords = [];
                             var ajustFrameSize = function(check) {
                                 $modal.removeClass('fade');
                                 var height = $framebody.outerHeight();
@@ -238,8 +240,22 @@
                                 }
                                 if (scrollInside)
                                 {
+                                    var headerHeight = options.headerHeight;
+                                    if (typeof headerHeight !== 'number') {
+                                        headerHeight = $header.height();
+                                    } else if ($.isFunction(headerHeight)) {
+                                        headerHeight = headerHeight($header);
+                                    }
                                     var winHeight = $(window).height();
-                                    height = Math.min(height, winHeight - $header.height());
+                                    height = Math.min(height, winHeight - headerHeight);
+
+                                }
+                                if (frameSizeRecords.length > 1 && height === frameSizeRecords[0]) {
+                                    height = Math.max(height, frameSizeRecords[1]);
+                                }
+                                frameSizeRecords.push(height);
+                                while (frameSizeRecords.length > 2) {
+                                    frameSizeRecords.shift();
                                 }
                                 $body.css('height', height);
                                 if(options.fade) $modal.addClass('fade');
@@ -294,11 +310,12 @@
         }
 
         $modal.modal({
-            show       : 'show',
-            backdrop   : options.backdrop,
-            moveable   : options.moveable,
-            rememberPos: options.rememberPos,
-            keyboard   : options.keyboard
+            show         : 'show',
+            backdrop     : options.backdrop,
+            moveable     : options.moveable,
+            rememberPos  : options.rememberPos,
+            keyboard     : options.keyboard,
+            scrollInside : options.scrollInside,
         });
     };
 
@@ -366,6 +383,7 @@
             else $this.modalTrigger(option, settings);
         });
     };
+    $.fn.modal.bs = old;
 
     var getModal = function(modal) {
         if (!modal) {

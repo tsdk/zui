@@ -121,7 +121,7 @@ $('#calendar').calendar();
 
 ### 方法
 
-日历插件提供一组方法来向日历添加新的时间、更改已有事件或者删除已有事件。
+日历插件提供一组方法来向日历添加新的事件、更改已有事件或者删除已有事件。
 
 #### 获取日历对象实例
 
@@ -132,7 +132,7 @@ $('#calendar').calendar();
 var calendar = $('#calendar').data('zui.calendar');
 ```
 
-#### 切换或刷新视图
+#### 切换视图
 
 要切换不同的视图或所显示的日期范围，请使用日历对象的`display(view, date)`方法。
 
@@ -142,6 +142,23 @@ var calendar = $('#calendar').data('zui.calendar');
 calendar.display('month', '2014-8-14');   // 切换视图为月份视图，并将日期范围限定为2014年8月
 calendar.display('month');                // 切换视图为月份视图，使用当前日期范围
 calendar.display();                       // 重新刷新当前视图
+```
+
+#### 重置日历数据
+
+要重置日历数据并对界面进行刷新，则可以使用日历对象上的 `resetData(data)` 方法。
+
+```js
+/* 重置日历数据 */
+var calendar = $('#calendar').data('zui.calendar');
+calendar.resetData({
+    calendars: {
+        // 新的日历数据
+    },
+    events: [
+        // 新的事件数据
+    ]
+});
 ```
 
 #### 增加事件
